@@ -53,8 +53,10 @@ const HomePage = () => {
     <section className="home-page">
       <Container>
         <Row>
-          <Col md={12}>Homepage...</Col>
-          <Col md={12}>
+          <Col md={12} className="mb-3">
+            Homepage...
+          </Col>
+          <Col md={12} className="mb-3">
             <Button
               variant="outline-primary"
               onClick={placeholderHandler}
@@ -104,7 +106,7 @@ const HomePage = () => {
               users
             </Button>{' '}
           </Col>
-          <Col md={12}>
+          <Col md={12} className="mb-3">
             <div className="content">{JSON.stringify(jsonPlaceholderData)}</div>
           </Col>
         </Row>
