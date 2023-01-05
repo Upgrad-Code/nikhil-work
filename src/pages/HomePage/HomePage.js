@@ -1,5 +1,5 @@
 import React, { useReducer, useEffect } from 'react';
-import { Container, Col, Row } from 'react-bootstrap';
+import { Container, Col, Row, Button } from 'react-bootstrap';
 import { JSONPLACEHOLDER_API_URL } from '../../helpers/config';
 import { getJson } from '../../helpers/helperFns';
 import { ACTION_TYPES } from '../../helpers/actions';
@@ -47,7 +47,6 @@ const HomePage = () => {
       <Container>
         <Row>
           <Col md={12}>Homepage...</Col>
-
           <Col md={12}>
             <Button variant="outline-primary" value="posts">
               posts
@@ -67,6 +66,9 @@ const HomePage = () => {
             <Button variant="outline-primary" value="users">
               users
             </Button>{' '}
+          </Col>
+          <Col md={12}>
+            <div className="content">{JSON.stringify(jsonPlaceholderData)}</div>
           </Col>
         </Row>
       </Container>
