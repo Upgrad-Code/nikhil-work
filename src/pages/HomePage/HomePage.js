@@ -47,6 +47,24 @@ const HomePage = () => {
       <Container>
         <Row>
           <Col md={12}>Homepage...</Col>
+
+          <Col md={12}>
+            <Button variant="outline-primary" value="posts">
+              posts
+            </Button>{' '}
+            <Button variant="outline-primary" value="posts">
+              posts
+            </Button>{' '}
+            <Button variant="outline-primary" value="posts">
+              posts
+            </Button>{' '}
+            <Button variant="outline-primary" value="posts">
+              posts
+            </Button>{' '}
+            <Button variant="outline-primary" value="posts">
+              posts
+            </Button>{' '}
+          </Col>
         </Row>
       </Container>
     </section>
