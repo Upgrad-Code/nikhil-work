@@ -52,17 +52,20 @@ const HomePage = () => {
             <Button variant="outline-primary" value="posts">
               posts
             </Button>{' '}
-            <Button variant="outline-primary" value="posts">
-              posts
+            <Button variant="outline-primary" value="comments">
+              comments
             </Button>{' '}
-            <Button variant="outline-primary" value="posts">
-              posts
+            <Button variant="outline-primary" value="albums">
+              albums
             </Button>{' '}
-            <Button variant="outline-primary" value="posts">
-              posts
+            <Button variant="outline-primary" value="photos">
+              photos
             </Button>{' '}
-            <Button variant="outline-primary" value="posts">
-              posts
+            <Button variant="outline-primary" value="todos">
+              todos
+            </Button>{' '}
+            <Button variant="outline-primary" value="users">
+              users
             </Button>{' '}
           </Col>
         </Row>
