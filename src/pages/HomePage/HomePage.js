@@ -7,8 +7,8 @@ import { iState, reducer } from '../../reducers/jsonPlaceholderReducer';
 import './HomePage.scss';
 
 const HomePage = () => {
+  console.log('component render');
   const [state, dispatch] = useReducer(reducer, iState);
-  console.log(state);
 
   const { isLoading, jsonPlaceholderData, isError, jsonPlaceholderPram } =
     state;
