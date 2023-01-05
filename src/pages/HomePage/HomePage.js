@@ -40,7 +40,14 @@ const HomePage = () => {
     return () => {
       console.log('Clean Up...');
     };
-  }, []);
+  }, [jsonPlaceholderPram]);
+
+  const placeholderHandler = (e) => {
+    return dispatch({
+      type: ACTION_TYPES.UPDATE_JSONPLACEHOLDER_PRAM,
+      payload: e.target.value,
+    });
+  };
 
   return (
     <section className="home-page">
@@ -48,22 +55,47 @@ const HomePage = () => {
         <Row>
           <Col md={12}>Homepage...</Col>
           <Col md={12}>
-            <Button variant="outline-primary" value="posts">
+            <Button
+              variant="outline-primary"
+              onClick={placeholderHandler}
+              value="posts"
+              className={jsonPlaceholderPram === 'posts' ? 'active' : ''}
+            >
               posts
             </Button>{' '}
-            <Button variant="outline-primary" value="comments">
+            <Button
+              variant="outline-primary"
+              onClick={placeholderHandler}
+              value="comments"
+            >
               comments
             </Button>{' '}
-            <Button variant="outline-primary" value="albums">
+            <Button
+              variant="outline-primary"
+              onClick={placeholderHandler}
+              value="albums"
+            >
               albums
             </Button>{' '}
-            <Button variant="outline-primary" value="photos">
+            <Button
+              variant="outline-primary"
+              onClick={placeholderHandler}
+              value="photos"
+            >
               photos
             </Button>{' '}
-            <Button variant="outline-primary" value="todos">
+            <Button
+              variant="outline-primary"
+              onClick={placeholderHandler}
+              value="todos"
+            >
               todos
             </Button>{' '}
-            <Button variant="outline-primary" value="users">
+            <Button
+              variant="outline-primary"
+              onClick={placeholderHandler}
+              value="users"
+            >
               users
             </Button>{' '}
           </Col>

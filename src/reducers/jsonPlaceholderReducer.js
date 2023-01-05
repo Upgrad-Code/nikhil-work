@@ -26,6 +26,12 @@ export const reducer = (state, action) => {
         isError: action.payload,
         isLoading: false,
       };
+    case ACTION_TYPES.UPDATE_JSONPLACEHOLDER_PRAM:
+      return {
+        ...state,
+        jsonPlaceholderPram: action.payload,
+        isLoading: false,
+      };
     default:
       return { ...state };
   }
