@@ -14,6 +14,8 @@ const HomePage = () => {
     state;
 
   useEffect(() => {
+    let subscribed = true;
+
     dispatch({
       type: ACTION_TYPES.FETCH_START,
     });
@@ -23,15 +25,20 @@ const HomePage = () => {
         const data = await getJson(
           `${JSONPLACEHOLDER_API_URL}/${jsonPlaceholderPram}`
         );
-        dispatch({
-          type: ACTION_TYPES.FETCH_SUCCESS,
-          payload: [...data],
-        });
+
+        if (subscribed) {
+          dispatch({
+            type: ACTION_TYPES.FETCH_SUCCESS,
+            payload: [...data],
+          });
+        }
       } catch (err) {
-        dispatch({
-          type: ACTION_TYPES.FETCH_ERROR,
-          payload: err,
-        });
+        if (subscribed) {
+          dispatch({
+            type: ACTION_TYPES.FETCH_ERROR,
+            payload: err,
+          });
+        }
       }
     })();
 
@@ -39,6 +46,7 @@ const HomePage = () => {
 
     return () => {
       console.log('Clean Up...');
+      subscribed = false;
     };
   }, [jsonPlaceholderPram]);
 
