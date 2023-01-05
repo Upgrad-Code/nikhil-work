@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from 'react';
+import React, { useReducer, useEffect, useRef } from 'react';
 import { Container, Col, Row, Button } from 'react-bootstrap';
 import { JSONPLACEHOLDER_API_URL } from '../../helpers/config';
 import { getJson } from '../../helpers/helperFns';
@@ -67,6 +67,7 @@ const HomePage = () => {
               variant="outline-primary"
               onClick={placeholderHandler}
               value="comments"
+              className={jsonPlaceholderPram === 'comments' ? 'active' : ''}
             >
               comments
             </Button>{' '}
@@ -74,6 +75,7 @@ const HomePage = () => {
               variant="outline-primary"
               onClick={placeholderHandler}
               value="albums"
+              className={jsonPlaceholderPram === 'albums' ? 'active' : ''}
             >
               albums
             </Button>{' '}
@@ -81,6 +83,7 @@ const HomePage = () => {
               variant="outline-primary"
               onClick={placeholderHandler}
               value="photos"
+              className={jsonPlaceholderPram === 'photos' ? 'active' : ''}
             >
               photos
             </Button>{' '}
@@ -88,6 +91,7 @@ const HomePage = () => {
               variant="outline-primary"
               onClick={placeholderHandler}
               value="todos"
+              className={jsonPlaceholderPram === 'todos' ? 'active' : ''}
             >
               todos
             </Button>{' '}
@@ -95,6 +99,7 @@ const HomePage = () => {
               variant="outline-primary"
               onClick={placeholderHandler}
               value="users"
+              className={jsonPlaceholderPram === 'users' ? 'active' : ''}
             >
               users
             </Button>{' '}
