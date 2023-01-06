@@ -1,5 +1,5 @@
-import React, { useReducer, useEffect, useRef } from 'react';
-import { Container, Col, Row, Button } from 'react-bootstrap';
+import React, { useReducer, useEffect } from 'react';
+import { Container, Col, Row, Button, Alert, Spinner } from 'react-bootstrap';
 import { JSONPLACEHOLDER_API_URL } from '../../helpers/config';
 import { getJson } from '../../helpers/helperFns';
 import { ACTION_TYPES } from '../../helpers/actions';
@@ -115,7 +115,15 @@ const HomePage = () => {
             </Button>{' '}
           </Col>
           <Col md={12} className="mb-3">
-            <div className="content">{JSON.stringify(jsonPlaceholderData)}</div>
+            <div className="content">
+              {isLoading ? (
+                <Spinner animation="border" />
+              ) : isError ? (
+                <p className="error">{isError}</p>
+              ) : (
+                <p>{JSON.stringify(jsonPlaceholderData)}</p>
+              )}
+            </div>
           </Col>
         </Row>
       </Container>
