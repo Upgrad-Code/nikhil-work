@@ -18,6 +18,9 @@ export const Product = ({ data }) => {
 
       // if the element is intesecting replace src attribute with orignal image...
       entry.target.src = entry.target.dataset.src;
+      entry.target.addEventListener('load', function () {
+        entry.target.classList.remove('loading');
+      });
 
       // if image is loaded no need to observe it again..
       self.unobserve(entry.target);
@@ -47,8 +50,7 @@ export const Product = ({ data }) => {
                   variant="top"
                   src="https://raw.githubusercontent.com/Upgrad-Code/nikhil-work/f81810ec9f1f0b4ad88ec0ef077741242c3cceb0/public/img/dummy-img.jpg"
                   data-src={p.thumbnail}
-                  className={loaded ? 'loaded' : 'loading'}
-                  onLoad={() => setLoaded(true)}
+                  className="loading"
                 />
                 <Card.Body>
                   <Card.Title>{p.title}</Card.Title>

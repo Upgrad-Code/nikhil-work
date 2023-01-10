@@ -4,14 +4,11 @@
     &-img-top {
       height: 150px;
       object-fit: cover;
+      transition: all 1.5s linear;
     }
-    .loading {
+    &-img-top.loading {
       filter: blur(10px);
       clip-path: inset(0);
-    }
-    .loaded {
-      filter: blur(0px);
-      transition: filter 0.3s linear;
     }
   }
 }
