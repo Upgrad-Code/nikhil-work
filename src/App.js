@@ -9,7 +9,7 @@ export default function App() {
     <section className="nik_app">
       {/* <HomePage /> */}
       <ProductsPage />
-      <JsonPlaceholderPage />
+      {/* <JsonPlaceholderPage /> */}
     </section>
   );
 }
