@@ -12,6 +12,7 @@ const ProductsPage = () => {
   const { iState, reducer } = useContext(ProductsContext); // Now reducer make use of values from context...
   const [state, dispatch] = useReducer(reducer, iState);
   console.log(state);
+  const { loading, products, error } = state;
 
   useEffect(() => {
     let subscribed = true;
@@ -45,14 +46,20 @@ const ProductsPage = () => {
   }, []);
 
   return (
-    <Container>
-      <Row>
-        <Col md={12}>
-          <p>Product Page...</p>
-          <Product />
-        </Col>
-      </Row>
-    </Container>
+    <section className="product__page">
+      <Container>
+        <Row>
+          <Col md={12}>
+            <p>Product Page...</p>
+          </Col>
+        </Row>
+      </Container>
+      <Container>
+        <Row>
+          <Product data={products} />
+        </Row>
+      </Container>
+    </section>
   );
 };
 
