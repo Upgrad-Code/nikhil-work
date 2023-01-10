@@ -1,0 +1,9 @@
+.product {
+  .card {
+    height: 100%;
+    &-img-top {
+      height: 120px;
+      object-fit: cover;
+    }
+  }
+}
