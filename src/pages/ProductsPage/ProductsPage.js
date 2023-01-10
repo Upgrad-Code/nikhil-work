@@ -53,8 +53,6 @@ const ProductsPage = () => {
             <p>Product Page...</p>
           </Col>
         </Row>
-      </Container>
-      <Container>
         <Row>
           <Product data={products} />
         </Row>
