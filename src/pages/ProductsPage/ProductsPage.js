@@ -5,6 +5,7 @@ import { ACTION_TYPES } from '../../helpers/actions';
 import { getJson } from '../../helpers/helperFns';
 // import { iState, reducer } from '../../reducers/productsPageReducer';
 import { ProductsContext } from '../../contexts/productsContext';
+import { Product } from '../../components/Product/Product';
 import './ProductsPage.scss';
 
 const ProductsPage = () => {
@@ -48,6 +49,7 @@ const ProductsPage = () => {
       <Row>
         <Col md={12}>
           <p>Product Page...</p>
+          <Product />
         </Col>
       </Row>
     </Container>
