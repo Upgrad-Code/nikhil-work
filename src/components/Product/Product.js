@@ -1,9 +1,39 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Col, Row, Card, Button } from 'react-bootstrap';
 import './Product.scss';
 
 export const Product = ({ data }) => {
-  console.log(data);
+  const [loaded, setLoaded] = useState(false);
+
+  const options = {
+    root: null,
+    rootMargin: '0px 0px 0px 0px',
+    threshold: 0,
+  };
+
+  const laodImg = (entries, self) => {
+    entries.forEach((entry) => {
+      // if element is not intesecting to the view port return from here...
+      if (!entry.isIntersecting) return;
+
+      // if the element is intesecting replace src attribute with orignal image...
+      entry.target.src = entry.target.dataset.src;
+
+      // if image is loaded no need to observe it again..
+      self.unobserve(entry.target);
+    });
+  };
+
+  useEffect(() => {
+    const imgObserver = new IntersectionObserver(laodImg, options);
+    const imgs = document.querySelectorAll('img[data-src]');
+    imgs.forEach((img) => imgObserver.observe(img));
+
+    return () => {
+      imgs.forEach((img) => imgObserver.unobserve(img));
+    };
+  });
+
   return (
     <>
       {data &&
@@ -13,7 +43,13 @@ export const Product = ({ data }) => {
           return (
             <Col lg={3} md={4} key={p.id} className="mb-4 product">
               <Card>
-                <Card.Img variant="top" src={p.thumbnail} />
+                <Card.Img
+                  variant="top"
+                  src="https://raw.githubusercontent.com/Upgrad-Code/nikhil-work/f81810ec9f1f0b4ad88ec0ef077741242c3cceb0/public/img/dummy-img.jpg"
+                  data-src={p.thumbnail}
+                  className={loaded ? 'loaded' : 'loading'}
+                  onLoad={() => setLoaded(true)}
+                />
                 <Card.Body>
                   <Card.Title>{p.title}</Card.Title>
                   <Card.Text>{p.description}</Card.Text>
