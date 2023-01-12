@@ -11,7 +11,7 @@ export const ProductPagination = () => {
   // console.log(prodsTotal, prodsLimit, pageNum);
 
   const createPagesArray = () => {
-    const arrLen = Math.floor(prodsTotal / prodsLimit);
+    const arrLen = Math.ceil(prodsTotal / prodsLimit);
     const arr = [];
     for (let i = 1; i <= arrLen; i++) {
       arr.push(i);

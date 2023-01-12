@@ -27,7 +27,7 @@ const ProductsPage = () => {
       try {
         const data = await getJson(
           `${DUMMY_PRODUCTS_API_URL}/?limit=${prodsLimit}&skip=${
-            prodsLimit * pageNum - prodsLimit
+            pageNum * prodsLimit - prodsLimit
           }`
         );
 

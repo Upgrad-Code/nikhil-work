@@ -50,11 +50,12 @@ export const Product = ({ data }) => {
                   data-src={p.thumbnail}
                   className="loading"
                 />
-                {/* <Card.Body>
-                  <Card.Title>{p.title}</Card.Title>
+                <Card.Body>
+                  <Card.Title>{p.id}</Card.Title>
+                  {/* <Card.Title>{p.title}</Card.Title>
                   <Card.Text>{p.description}</Card.Text>
-                  <Button variant="primary">Add to cart</Button>
-                </Card.Body> */}
+                  <Button variant="primary">Add to cart</Button> */}
+                </Card.Body>
               </Card>
             </Col>
           );
