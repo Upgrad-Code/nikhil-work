@@ -22,8 +22,10 @@ export const reducer = (state, action) => {
       };
     case ACTION_TYPES.FETCH_ERROR:
       return { ...state, error: action.payload, loading: false };
-    case ACTION_TYPES.UPDATE_PAGE_NUMBER:
-      return { ...state, pageNum: action.payload, loading: false };
+    // case ACTION_TYPES.UPDATE_PAGE_NUMBER:
+    //   return { ...state, pageNum: action.payload };
+    // case ACTION_TYPES.INCREASE_PAGE_NUMBER:
+    //   return { ...state, pageNum: action.payload };
     default:
       return state;
   }

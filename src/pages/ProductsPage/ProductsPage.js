@@ -53,13 +53,21 @@ const ProductsPage = () => {
     };
   }, [pageNum]);
 
-  const selectPageHandler = (ev, pageNum) => {
-    ev.preventDefault();
-    dispatch({
-      type: ACTION_TYPES.UPDATE_PAGE_NUMBER,
-      payload: pageNum,
-    });
-  };
+  // const selectPageHandler = (ev, pageNum) => {
+  //   ev.preventDefault();
+  //   dispatch({
+  //     type: ACTION_TYPES.UPDATE_PAGE_NUMBER,
+  //     payload: pageNum,
+  //   });
+  // };
+
+  // const increasePageHandler = (ev, pageNum) => {
+  //   ev.preventDefault();
+  //   dispatch({
+  //     type: ACTION_TYPES.INCREASE_PAGE_NUMBER,
+  //     payload: pageNum + 1,
+  //   });
+  // };
 
   return (
     <section className="product__page">
@@ -72,7 +80,13 @@ const ProductsPage = () => {
         <Row>
           <Product data={products} />
           <ProductPagination
-            data={{ prodsTotal, prodsLimit, pageNum, selectPageHandler }}
+            data={{
+              prodsTotal,
+              prodsLimit,
+              pageNum,
+              // selectPageHandler,
+              // increasePageHandler,
+            }}
           />
         </Row>
       </Container>

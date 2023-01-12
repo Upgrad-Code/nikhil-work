@@ -1,8 +1,15 @@
 import React from 'react';
 import { Col } from 'react-bootstrap';
+import { ACTION_TYPES } from '../../helpers/actions';
 
 export const ProductPagination = ({ data }) => {
-  const { prodsTotal, prodsLimit, pageNum, selectPageHandler } = data;
+  const {
+    prodsTotal,
+    prodsLimit,
+    pageNum,
+    selectPageHandler,
+    increasePageHandler,
+  } = data;
 
   const createPagesArray = () => {
     const arrLen = Math.floor(prodsTotal / prodsLimit);
@@ -40,7 +47,7 @@ export const ProductPagination = ({ data }) => {
                     className={
                       page === pageNum ? 'page-link active' : 'page-link'
                     }
-                    onClick={(ev) => selectPageHandler(ev, page)}
+                    // onClick={(ev) => selectPageHandler(ev, page)}
                   >
                     {page}
                   </a>
@@ -48,7 +55,11 @@ export const ProductPagination = ({ data }) => {
               );
             })}
           <li className="page-item">
-            <a className="page-link" href="#">
+            <a
+              className="page-link"
+              href="#"
+              // onClick={(ev) => increasePageHandler(ev, pageNum)}
+            >
               Next
             </a>
           </li>
