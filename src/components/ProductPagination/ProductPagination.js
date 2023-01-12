@@ -1,15 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Col } from 'react-bootstrap';
 import { ACTION_TYPES } from '../../helpers/actions';
+import { ProductsContext } from '../../contexts/productsContext';
 
-export const ProductPagination = ({ data }) => {
-  const {
-    prodsTotal,
-    prodsLimit,
-    pageNum,
-    selectPageHandler,
-    increasePageHandler,
-  } = data;
+export const ProductPagination = () => {
+  const { state, dispatch } = useContext(ProductsContext);
+  console.log(state);
+
+  const { prodsTotal, prodsLimit, pageNum } = state;
+  // console.log(prodsTotal, prodsLimit, pageNum);
 
   const createPagesArray = () => {
     const arrLen = Math.floor(prodsTotal / prodsLimit);
@@ -21,17 +20,23 @@ export const ProductPagination = ({ data }) => {
   };
 
   const pages = createPagesArray();
+  console.log(pages);
 
   return (
     <Col md={12}>
       <nav>
         <ul className="pagination">
-          <li className="page-item disabled">
+          <li className={pageNum === 1 ? 'page-item disabled' : 'page-item'}>
             <a
               className="page-link"
               href="#"
-              tabIndex="-1"
-              aria-disabled="true"
+              onClick={(ev) => {
+                ev.preventDefault();
+                dispatch({
+                  type: ACTION_TYPES.UPDATE_PAGE_NUMBER,
+                  payload: pageNum - 1,
+                });
+              }}
             >
               Previous
             </a>
@@ -47,18 +52,34 @@ export const ProductPagination = ({ data }) => {
                     className={
                       page === pageNum ? 'page-link active' : 'page-link'
                     }
-                    // onClick={(ev) => selectPageHandler(ev, page)}
+                    onClick={(ev) => {
+                      ev.preventDefault();
+                      dispatch({
+                        type: ACTION_TYPES.UPDATE_PAGE_NUMBER,
+                        payload: page,
+                      });
+                    }}
                   >
                     {page}
                   </a>
                 </li>
               );
             })}
-          <li className="page-item">
+          <li
+            className={
+              pageNum >= pages.length ? 'page-item disabled' : 'page-item'
+            }
+          >
             <a
               className="page-link"
               href="#"
-              // onClick={(ev) => increasePageHandler(ev, pageNum)}
+              onClick={(ev) => {
+                ev.preventDefault();
+                dispatch({
+                  type: ACTION_TYPES.UPDATE_PAGE_NUMBER,
+                  payload: pageNum + 1,
+                });
+              }}
             >
               Next
             </a>

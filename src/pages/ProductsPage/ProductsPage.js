@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { Container, Col, Row } from 'react-bootstrap';
 import { DUMMY_PRODUCTS_API_URL } from '../../helpers/config';
 import { ACTION_TYPES } from '../../helpers/actions';
@@ -10,8 +10,7 @@ import { ProductPagination } from '../../components/ProductPagination/ProductPag
 import './ProductsPage.scss';
 
 const ProductsPage = () => {
-  const { iState, reducer } = useContext(ProductsContext); // Now reducer make use of values from context...
-  const [state, dispatch] = useReducer(reducer, iState);
+  const { state, dispatch } = useContext(ProductsContext); // Now reducer make use of values from context...
 
   const { loading, products, error, pageNum, prodsLimit, prodsTotal } = state;
 
@@ -31,7 +30,8 @@ const ProductsPage = () => {
             prodsLimit * pageNum - prodsLimit
           }`
         );
-        // console.log(data);
+
+        console.log(data);
         if (subscribed) {
           dispatch({
             type: ACTION_TYPES.FETCH_SUCCESS,
@@ -79,15 +79,7 @@ const ProductsPage = () => {
         </Row>
         <Row>
           <Product data={products} />
-          <ProductPagination
-            data={{
-              prodsTotal,
-              prodsLimit,
-              pageNum,
-              // selectPageHandler,
-              // increasePageHandler,
-            }}
-          />
+          <ProductPagination />
         </Row>
       </Container>
     </section>
