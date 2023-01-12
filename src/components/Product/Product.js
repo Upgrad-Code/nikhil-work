@@ -3,8 +3,6 @@ import { Container, Col, Row, Card, Button } from 'react-bootstrap';
 import './Product.scss';
 
 export const Product = ({ data }) => {
-  const [loaded, setLoaded] = useState(false);
-
   const options = {
     root: null,
     rootMargin: '0px 0px 0px 0px',
