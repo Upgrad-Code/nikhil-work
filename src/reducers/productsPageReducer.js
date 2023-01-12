@@ -4,8 +4,9 @@ export const iState = {
   loading: false,
   products: [],
   error: null,
-  pageNum: 3,
-  productsLimit: 10,
+  pageNum: 1,
+  prodsLimit: 12,
+  prodsTotal: 0,
 };
 
 export const reducer = (state, action) => {
@@ -13,7 +14,12 @@ export const reducer = (state, action) => {
     case ACTION_TYPES.FETCH_START:
       return { ...state, loading: true };
     case ACTION_TYPES.FETCH_SUCCESS:
-      return { ...state, products: action.payload, loading: false };
+      return {
+        ...state,
+        products: action.payload.products,
+        prodsTotal: action.payload.total,
+        loading: false,
+      };
     case ACTION_TYPES.FETCH_ERROR:
       return { ...state, error: action.payload, loading: false };
     default:

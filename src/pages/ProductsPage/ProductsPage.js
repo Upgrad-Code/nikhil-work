@@ -13,7 +13,9 @@ const ProductsPage = () => {
   const { iState, reducer } = useContext(ProductsContext); // Now reducer make use of values from context...
   const [state, dispatch] = useReducer(reducer, iState);
 
-  const { loading, products, error, pageNum, productsLimit } = state;
+  const { loading, products, error, pageNum, prodsLimit, prodsTotal } = state;
+
+  console.log(state);
 
   useEffect(() => {
     let subscribed = true;
@@ -25,15 +27,15 @@ const ProductsPage = () => {
     (async () => {
       try {
         const data = await getJson(
-          `${DUMMY_PRODUCTS_API_URL}/?limit=${productsLimit}&skip=${
-            productsLimit * pageNum - productsLimit
+          `${DUMMY_PRODUCTS_API_URL}/?limit=${prodsLimit}&skip=${
+            prodsLimit * pageNum - prodsLimit
           }`
         );
-        console.log(data);
+        // console.log(data);
         if (subscribed) {
           dispatch({
             type: ACTION_TYPES.FETCH_SUCCESS,
-            payload: [...data.products],
+            payload: { products: [...data.products], total: data.total },
           });
         }
       } catch (err) {
@@ -61,7 +63,7 @@ const ProductsPage = () => {
         </Row>
         <Row>
           <Product data={products} />
-          <ProductPagination />
+          <ProductPagination data={{ prodsTotal, prodsLimit }} />
         </Row>
       </Container>
     </section>

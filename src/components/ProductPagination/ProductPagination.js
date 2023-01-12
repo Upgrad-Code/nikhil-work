@@ -1,7 +1,10 @@
 import React from 'react';
 import { Col, Pagination } from 'react-bootstrap';
 
-export const ProductPagination = () => {
+export const ProductPagination = ({ data }) => {
+  const { prodsTotal, prodsLimit } = data;
+  const arrLen = Math.floor(prodsTotal / prodsLimit);
+  console.log(arrLen);
   return (
     <Col md={12}>
       <nav>
