@@ -11,7 +11,7 @@ export const Product = ({ data }) => {
     threshold: 0,
   };
 
-  const laodImg = (entries, self) => {
+  const laodImg = (entries, observer) => {
     entries.forEach((entry) => {
       // if element is not intesecting to the view port return from here...
       if (!entry.isIntersecting) return;
@@ -23,7 +23,7 @@ export const Product = ({ data }) => {
       });
 
       // if image is loaded no need to observe it again..
-      self.unobserve(entry.target);
+      observer.unobserve(entry.target);
     });
   };
 
@@ -52,11 +52,11 @@ export const Product = ({ data }) => {
                   data-src={p.thumbnail}
                   className="loading"
                 />
-                <Card.Body>
+                {/* <Card.Body>
                   <Card.Title>{p.title}</Card.Title>
                   <Card.Text>{p.description}</Card.Text>
                   <Button variant="primary">Add to cart</Button>
-                </Card.Body>
+                </Card.Body> */}
               </Card>
             </Col>
           );
