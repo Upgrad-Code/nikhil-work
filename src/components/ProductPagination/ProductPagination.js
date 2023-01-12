@@ -1,10 +1,20 @@
 import React from 'react';
-import { Col, Pagination } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 
 export const ProductPagination = ({ data }) => {
-  const { prodsTotal, prodsLimit } = data;
-  const arrLen = Math.floor(prodsTotal / prodsLimit);
-  console.log(arrLen);
+  const { prodsTotal, prodsLimit, selectPageHandler } = data;
+
+  const createPagesArray = () => {
+    const arrLen = Math.floor(prodsTotal / prodsLimit);
+    const arr = [];
+    for (let i = 1; i <= arrLen; i++) {
+      arr.push(i);
+    }
+    return arr;
+  };
+
+  const pages = createPagesArray();
+
   return (
     <Col md={12}>
       <nav>
@@ -19,21 +29,22 @@ export const ProductPagination = ({ data }) => {
               Previous
             </a>
           </li>
-          <li className="page-item">
-            <a className="page-link" href="#">
-              1
-            </a>
-          </li>
-          <li className="page-item active" aria-current="page">
-            <a className="page-link" href="#">
-              2
-            </a>
-          </li>
-          <li className="page-item">
-            <a className="page-link" href="#">
-              3
-            </a>
-          </li>
+          {pages &&
+            Array.isArray(pages) &&
+            pages.length > 0 &&
+            pages.map((page) => {
+              return (
+                <li className="page-item" key={page}>
+                  <a
+                    className="page-link"
+                    href="#"
+                    onClick={() => selectPageHandler(page)}
+                  >
+                    {page}
+                  </a>
+                </li>
+              );
+            })}
           <li className="page-item">
             <a className="page-link" href="#">
               Next

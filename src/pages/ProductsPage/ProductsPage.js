@@ -51,7 +51,14 @@ const ProductsPage = () => {
     return () => {
       subscribed = false;
     };
-  }, []);
+  }, [pageNum]);
+
+  const selectPageHandler = (pageNum) => {
+    dispatch({
+      type: ACTION_TYPES.UPDATE_PAGE_NUMBER,
+      payload: pageNum,
+    });
+  };
 
   return (
     <section className="product__page">
@@ -63,7 +70,9 @@ const ProductsPage = () => {
         </Row>
         <Row>
           <Product data={products} />
-          <ProductPagination data={{ prodsTotal, prodsLimit }} />
+          <ProductPagination
+            data={{ prodsTotal, prodsLimit, selectPageHandler }}
+          />
         </Row>
       </Container>
     </section>
