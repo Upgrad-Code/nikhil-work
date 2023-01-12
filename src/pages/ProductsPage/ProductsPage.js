@@ -6,13 +6,14 @@ import { getJson } from '../../helpers/helperFns';
 // import { iState, reducer } from '../../reducers/productsPageReducer';
 import { ProductsContext } from '../../contexts/productsContext';
 import { Product } from '../../components/Product/Product';
+import { ProductPagination } from '../../components/ProductPagination/ProductPagination';
 import './ProductsPage.scss';
 
 const ProductsPage = () => {
   const { iState, reducer } = useContext(ProductsContext); // Now reducer make use of values from context...
   const [state, dispatch] = useReducer(reducer, iState);
 
-  const { loading, products, error } = state;
+  const { loading, products, error, pageNum, productsLimit } = state;
 
   useEffect(() => {
     let subscribed = true;
@@ -23,7 +24,12 @@ const ProductsPage = () => {
 
     (async () => {
       try {
-        const data = await getJson(DUMMY_PRODUCTS_API_URL);
+        const data = await getJson(
+          `${DUMMY_PRODUCTS_API_URL}/?limit=${productsLimit}&skip=${
+            productsLimit * pageNum - productsLimit
+          }`
+        );
+        console.log(data);
         if (subscribed) {
           dispatch({
             type: ACTION_TYPES.FETCH_SUCCESS,
@@ -55,6 +61,7 @@ const ProductsPage = () => {
         </Row>
         <Row>
           <Product data={products} />
+          <ProductPagination />
         </Row>
       </Container>
     </section>

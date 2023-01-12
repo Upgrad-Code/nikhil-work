@@ -4,6 +4,8 @@ export const iState = {
   loading: false,
   products: [],
   error: null,
+  pageNum: 3,
+  productsLimit: 10,
 };
 
 export const reducer = (state, action) => {
