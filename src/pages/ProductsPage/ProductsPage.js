@@ -53,7 +53,8 @@ const ProductsPage = () => {
     };
   }, [pageNum]);
 
-  const selectPageHandler = (pageNum) => {
+  const selectPageHandler = (ev, pageNum) => {
+    ev.preventDefault();
     dispatch({
       type: ACTION_TYPES.UPDATE_PAGE_NUMBER,
       payload: pageNum,
@@ -71,7 +72,7 @@ const ProductsPage = () => {
         <Row>
           <Product data={products} />
           <ProductPagination
-            data={{ prodsTotal, prodsLimit, selectPageHandler }}
+            data={{ prodsTotal, prodsLimit, pageNum, selectPageHandler }}
           />
         </Row>
       </Container>

@@ -5,7 +5,7 @@ export const iState = {
   products: [],
   error: null,
   pageNum: 1,
-  prodsLimit: 12,
+  prodsLimit: 10,
   prodsTotal: 0,
 };
 
