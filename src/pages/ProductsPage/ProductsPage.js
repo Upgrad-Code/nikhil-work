@@ -15,8 +15,6 @@ const ProductsPage = () => {
 
   const { loading, products, error, pageNum, prodsLimit, prodsTotal } = state;
 
-  console.log(state);
-
   useEffect(() => {
     let subscribed = true;
 
@@ -31,8 +29,6 @@ const ProductsPage = () => {
             pageNum * prodsLimit - prodsLimit
           }`
         );
-
-        console.log(data);
         if (subscribed) {
           dispatch({
             type: ACTION_TYPES.FETCH_SUCCESS,
@@ -59,11 +55,11 @@ const ProductsPage = () => {
       <Container>
         <Row>
           <Col md={12}>
-            <p>Product Page...</p>
+            <h5>Product Page...</h5>
           </Col>
         </Row>
         <Row>
-          <Col md={8} className="position-relative">
+          <Col md={12} className="position-relative">
             {loading ? (
               <Loader />
             ) : error ? (
@@ -75,7 +71,6 @@ const ProductsPage = () => {
               </Row>
             )}
           </Col>
-          <Col md={4}></Col>
         </Row>
       </Container>
     </section>

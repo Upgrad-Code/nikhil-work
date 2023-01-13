@@ -1,8 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Container, Col, Row, Card, Button } from 'react-bootstrap';
+import { ACTION_TYPES } from '../../helpers/actions';
+import { ProductsContext } from '../../contexts/productsContext';
 import './Product.scss';
 
 export const Product = ({ data }) => {
+  const { state, dispatch } = useContext(ProductsContext);
+  console.log(state);
+  const { products } = state;
+
   const options = {
     root: null,
     rootMargin: '0px 0px 0px 0px',
@@ -35,6 +41,22 @@ export const Product = ({ data }) => {
     };
   });
 
+  const addToCartHandler = (id) => {
+    const product = products.find((p) => p.id === id);
+
+    dispatch({
+      type: ACTION_TYPES.ADD_TO_CART,
+      payload: product,
+    });
+  };
+
+  const removeFromCart = (id) => {
+    dispatch({
+      type: ACTION_TYPES.REMOVE_FROM_CART,
+      payload: id,
+    });
+  };
+
   return (
     <>
       {data &&
@@ -54,7 +76,22 @@ export const Product = ({ data }) => {
                   {/* <Card.Title>{p.id}</Card.Title> */}
                   <Card.Title>{p.title}</Card.Title>
                   {/* <Card.Text>{p.description}</Card.Text> */}
-                  <Button variant="primary">Add to cart</Button>
+                  <Button
+                    variant="primary"
+                    onClick={() => {
+                      addToCartHandler(p.id);
+                    }}
+                  >
+                    Add to cart
+                  </Button>
+                  <Button
+                    variant="primary"
+                    onClick={() => {
+                      removeFromCart(p.id);
+                    }}
+                  >
+                    Remove From Cart
+                  </Button>
                 </Card.Body>
               </Card>
             </Col>

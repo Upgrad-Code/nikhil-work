@@ -3,6 +3,7 @@ import { ACTION_TYPES } from '../helpers/actions';
 export const iState = {
   loading: false,
   products: [],
+  cart: [],
   error: null,
   pageNum: 1,
   prodsLimit: 10,
@@ -24,6 +25,16 @@ export const reducer = (state, action) => {
       return { ...state, error: action.payload, loading: false };
     case ACTION_TYPES.UPDATE_PAGE_NUMBER:
       return { ...state, pageNum: action.payload };
+    case ACTION_TYPES.ADD_TO_CART:
+      return {
+        ...state,
+        cart: state.cart.concat(action.payload),
+      };
+    case ACTION_TYPES.REMOVE_FROM_CART:
+      return {
+        ...state,
+        cart: state.cart.filter((p) => p.id !== action.payload),
+      };
     default:
       return state;
   }
