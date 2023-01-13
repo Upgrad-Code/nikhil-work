@@ -7,6 +7,7 @@ import { ProductsContext } from '../../contexts/productsContext';
 import { Product } from '../../components/Product/Product';
 import { ProductPagination } from '../../components/ProductPagination/ProductPagination';
 import { Loader } from '../../components/Loader/Loader';
+import { ErrorAlert } from '../../components/ErrorAlert/ErrorAlert';
 import './ProductsPage.scss';
 
 const ProductsPage = () => {
@@ -66,9 +67,7 @@ const ProductsPage = () => {
             {loading ? (
               <Loader />
             ) : error ? (
-              <div class="alert alert-danger" role="alert">
-                {error}
-              </div>
+              <ErrorAlert data={error} />
             ) : (
               <Row>
                 <Product data={products} />
