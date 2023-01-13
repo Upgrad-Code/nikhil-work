@@ -95,7 +95,7 @@ const CartPage = () => {
                   <Col md={9}>
                     <h5>Cart Total</h5>
                   </Col>
-                  <Col md={3}>${total}</Col>
+                  <Col md={3}><h5>${total}</h5></Col>
                 </Row>
               </Col>
             </Row>
