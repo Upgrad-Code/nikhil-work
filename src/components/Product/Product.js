@@ -81,9 +81,11 @@ export const Product = ({ data }) => {
                   className="loading"
                 />
                 <Card.Body>
-                  {/* <Card.Title>{p.id}</Card.Title> */}
-                  <Card.Title>{p.title}</Card.Title>
-                  {/* <Card.Text>{p.description}</Card.Text> */}
+                  <Card.Title>
+                    {p.title} |{' '}
+                    <span className="product__price">${p.price}</span>
+                  </Card.Title>
+                  {/* <Card.Text>${p.price}</Card.Text> */}
 
                   {cart && cart.find((cp) => cp.id === p.id) ? (
                     <Button

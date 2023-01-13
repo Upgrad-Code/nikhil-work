@@ -17,7 +17,7 @@ const CartPage = () => {
               {cart &&
                 cart.map((cp) => {
                   return (
-                    <Col md={12}>
+                    <Col md={12} key={cp.id}>
                       <Row>
                         <Col>
                           <Card>
@@ -30,9 +30,9 @@ const CartPage = () => {
                             />
                           </Card>
                         </Col>
-                        <Col></Col>
-                        <Col></Col>
-                        <Col></Col>
+                        <Col>{cp.title}</Col>
+                        <Col>{cp.price}</Col>
+                        <Col>{cp.quantity}</Col>
                       </Row>
                     </Col>
                   );
