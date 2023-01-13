@@ -6,7 +6,7 @@ export const iState = {
   cart: [],
   error: null,
   pageNum: 1,
-  prodsLimit: 10,
+  prodsLimit: 25,
   prodsTotal: 0,
 };
 
