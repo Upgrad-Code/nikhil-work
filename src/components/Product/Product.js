@@ -42,7 +42,7 @@ export const Product = ({ data }) => {
         data.length > 0 &&
         data.map((p) => {
           return (
-            <Col lg={3} md={4} key={p.id} className="mb-4 product">
+            <Col lg={4} md={4} key={p.id} className="mb-4 product">
               <Card>
                 <Card.Img
                   variant="top"
@@ -51,10 +51,10 @@ export const Product = ({ data }) => {
                   className="loading"
                 />
                 <Card.Body>
-                  <Card.Title>{p.id}</Card.Title>
-                  {/* <Card.Title>{p.title}</Card.Title>
-                  <Card.Text>{p.description}</Card.Text>
-                  <Button variant="primary">Add to cart</Button> */}
+                  {/* <Card.Title>{p.id}</Card.Title> */}
+                  <Card.Title>{p.title}</Card.Title>
+                  {/* <Card.Text>{p.description}</Card.Text> */}
+                  <Button variant="primary">Add to cart</Button>
                 </Card.Body>
               </Card>
             </Col>

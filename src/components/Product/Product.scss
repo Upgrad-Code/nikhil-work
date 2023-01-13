@@ -1,8 +1,11 @@
 .product {
   .card {
     height: 100%;
+    &-title {
+      font-size: 0.8rem;
+    }
     &-img-top {
-      height: 150px;
+      height: 120px;
       object-fit: cover;
       transition: all 0.3s linear;
     }

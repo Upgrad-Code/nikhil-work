@@ -24,7 +24,7 @@ export const ProductPagination = () => {
 
   return (
     <Col md={12}>
-      <nav>
+      <nav className="product__page_pagination">
         <ul className="pagination">
           <li className={pageNum === 1 ? 'page-item disabled' : 'page-item'}>
             <a
