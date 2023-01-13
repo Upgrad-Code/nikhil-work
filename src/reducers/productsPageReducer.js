@@ -35,6 +35,15 @@ export const reducer = (state, action) => {
         ...state,
         cart: state.cart.filter((p) => p.id !== action.payload),
       };
+    case ACTION_TYPES.UPDATE_PRODUCT_QTY:
+      return {
+        ...state,
+        cart: state.cart.filter((cp) =>
+          cp.id === action.payload.id
+            ? (cp.quantity = action.payload.quantity)
+            : 1
+        ),
+      };
     default:
       return state;
   }

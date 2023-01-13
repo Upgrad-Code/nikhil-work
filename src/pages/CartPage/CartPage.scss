@@ -1,0 +1,25 @@
+.cart__page {
+  .cart__product {
+    &-img {
+      height: 50px;
+      object-fit: cover;
+    }
+
+    &-qty {
+      max-width: 50px;
+      text-align: center;
+      display: inline-block;
+      padding: 0 15px;
+    }
+
+    &-title {
+      font-size: 0.8rem;
+    }
+
+    &-price {
+      color: #7952b3;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+  }
+}
