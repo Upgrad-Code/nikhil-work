@@ -42,7 +42,15 @@ export const Product = ({ data }) => {
   });
 
   const addToCartHandler = (id) => {
-    const product = products.find((p) => p.id === id);
+    const selectedProduct = products.find((p) => p.id === id);
+
+    const product = {
+      id: selectedProduct.id,
+      title: selectedProduct.title,
+      thumbnail: selectedProduct.thumbnail,
+      price: selectedProduct.price,
+      quantity: 1,
+    };
 
     dispatch({
       type: ACTION_TYPES.ADD_TO_CART,
