@@ -7,7 +7,7 @@ import './Product.scss';
 export const Product = ({ data }) => {
   const { state, dispatch } = useContext(ProductsContext);
   console.log(state);
-  const { products } = state;
+  const { products, cart } = state;
 
   const options = {
     root: null,
@@ -64,7 +64,7 @@ export const Product = ({ data }) => {
         data.length > 0 &&
         data.map((p) => {
           return (
-            <Col lg={4} md={4} key={p.id} className="mb-4 product">
+            <Col lg={3} md={3} key={p.id} className="mb-4 product">
               <Card>
                 <Card.Img
                   variant="top"
@@ -76,22 +76,26 @@ export const Product = ({ data }) => {
                   {/* <Card.Title>{p.id}</Card.Title> */}
                   <Card.Title>{p.title}</Card.Title>
                   {/* <Card.Text>{p.description}</Card.Text> */}
-                  <Button
-                    variant="primary"
-                    onClick={() => {
-                      addToCartHandler(p.id);
-                    }}
-                  >
-                    Add to cart
-                  </Button>
-                  <Button
-                    variant="primary"
-                    onClick={() => {
-                      removeFromCart(p.id);
-                    }}
-                  >
-                    Remove From Cart
-                  </Button>
+
+                  {cart && cart.find((cp) => cp.id === p.id) ? (
+                    <Button
+                      variant="danger"
+                      onClick={() => {
+                        removeFromCart(p.id);
+                      }}
+                    >
+                      Remove
+                    </Button>
+                  ) : (
+                    <Button
+                      variant="primary"
+                      onClick={() => {
+                        addToCartHandler(p.id);
+                      }}
+                    >
+                      Add
+                    </Button>
+                  )}
                 </Card.Body>
               </Card>
             </Col>
