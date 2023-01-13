@@ -6,6 +6,7 @@ import { getJson } from '../../helpers/helperFns';
 import { ProductsContext } from '../../contexts/productsContext';
 import { Product } from '../../components/Product/Product';
 import { ProductPagination } from '../../components/ProductPagination/ProductPagination';
+import { Loader } from '../../components/Loader/Loader';
 import './ProductsPage.scss';
 
 const ProductsPage = () => {
@@ -61,11 +62,19 @@ const ProductsPage = () => {
           </Col>
         </Row>
         <Row>
-          <Col md={8}>
-            <Row>
-              <Product data={products} />
-              <ProductPagination />
-            </Row>
+          <Col md={8} className="position-relative">
+            {loading ? (
+              <Loader />
+            ) : error ? (
+              <div class="alert alert-danger" role="alert">
+                {error}
+              </div>
+            ) : (
+              <Row>
+                <Product data={products} />
+                <ProductPagination />
+              </Row>
+            )}
           </Col>
           <Col md={4}></Col>
         </Row>

@@ -5,10 +5,7 @@ import { ProductsContext } from '../../contexts/productsContext';
 
 export const ProductPagination = () => {
   const { state, dispatch } = useContext(ProductsContext);
-  console.log(state);
-
   const { prodsTotal, prodsLimit, pageNum } = state;
-  // console.log(prodsTotal, prodsLimit, pageNum);
 
   const createPagesArray = () => {
     const arrLen = Math.ceil(prodsTotal / prodsLimit);
@@ -20,7 +17,6 @@ export const ProductPagination = () => {
   };
 
   const pages = createPagesArray();
-  console.log(pages);
 
   return (
     <Col md={12}>

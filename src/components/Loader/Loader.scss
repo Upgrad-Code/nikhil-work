@@ -1,0 +1,12 @@
+.nk_loader_wrap {
+  position: absolute;
+  height: 100vh;
+  text-align: center;
+  width: 100%;
+  .nk_loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
