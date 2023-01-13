@@ -8,14 +8,14 @@ const CartPage = () => {
   const { state, dispatch } = useContext(ProductsContext);
   const { cart } = state;
 
-  const [total, setTotal] = useState(0);
+  const [cartTotal, setCartTotal] = useState(0);
 
   useEffect(() => {
-    const calcSum = cart.reduce((acc, cp) => {
-      return acc + cp.price * cp.quantity;
-    }, 0);
-
-    setTotal(calcSum);
+    const calculatedSum = cart.reduce(
+      (acc, cp) => acc + cp.price * cp.quantity,
+      0
+    );
+    setCartTotal(calculatedSum);
   }, [cart]);
 
   return (
@@ -95,7 +95,9 @@ const CartPage = () => {
                   <Col md={9}>
                     <h5>Cart Total</h5>
                   </Col>
-                  <Col md={3}><h5>${total}</h5></Col>
+                  <Col md={3}>
+                    <h5>${cartTotal}</h5>
+                  </Col>
                 </Row>
               </Col>
             </Row>
