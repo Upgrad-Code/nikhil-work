@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Container, Col, Row, Card, Button } from 'react-bootstrap';
 import { ProductsContext } from '../../contexts/productsContext';
 import { ACTION_TYPES } from '../../helpers/actions';
@@ -7,6 +7,17 @@ import './CartPage.scss';
 const CartPage = () => {
   const { state, dispatch } = useContext(ProductsContext);
   const { cart } = state;
+
+  const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    const calcSum = cart.reduce((acc, cp) => {
+      return acc + cp.price * cp.quantity;
+    }, 0);
+
+    setTotal(calcSum);
+  }, [cart]);
+
   return (
     <section className="cart__page">
       <Container>
@@ -84,9 +95,7 @@ const CartPage = () => {
                   <Col md={9}>
                     <h5>Cart Total</h5>
                   </Col>
-                  <Col md={3}>
-                    ${cart && cart.reduce((acc, cp) => acc + cp.price, 0)}
-                  </Col>
+                  <Col md={3}>${total}</Col>
                 </Row>
               </Col>
             </Row>
