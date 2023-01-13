@@ -39,11 +39,6 @@ const CartPage = () => {
                             </span>
                           </Card.Title>
                         </Col>
-                        <Col md={3}>
-                          <span className="cart__product-price">
-                            ${cp.price * cp.quantity}
-                          </span>
-                        </Col>
                         <Col md={4}>
                           <Button
                             onClick={() => {
@@ -75,10 +70,25 @@ const CartPage = () => {
                             +
                           </Button>
                         </Col>
+                        <Col md={3}>
+                          <span className="cart__product-price">
+                            ${cp.price * cp.quantity}
+                          </span>
+                        </Col>
                       </Row>
                     </Col>
                   );
                 })}
+              <Col md={12}>
+                <Row>
+                  <Col md={9}>
+                    <h5>Cart Total</h5>
+                  </Col>
+                  <Col md={3}>
+                    ${cart && cart.reduce((acc, cp) => acc + cp.price, 0)}
+                  </Col>
+                </Row>
+              </Col>
             </Row>
           </Col>
         </Row>
