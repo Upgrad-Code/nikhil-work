@@ -6,7 +6,7 @@ import './Product.scss';
 
 export const Product = ({ data }) => {
   const { state, dispatch } = useContext(ProductsContext);
-  console.log(state);
+  // console.log(state);
   const { products, cart } = state;
 
   const options = {

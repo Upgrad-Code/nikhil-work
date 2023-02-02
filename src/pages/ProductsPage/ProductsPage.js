@@ -8,12 +8,21 @@ import { Product } from '../../components/Product/Product';
 import { ProductPagination } from '../../components/ProductPagination/ProductPagination';
 import { Loader } from '../../components/Loader/Loader';
 import { ErrorAlert } from '../../components/ErrorAlert/ErrorAlert';
+import { SearchBox } from '../../components/SearchBox/SearchBox';
 import './ProductsPage.scss';
 
 const ProductsPage = () => {
   const { state, dispatch } = useContext(ProductsContext);
 
-  const { loading, products, error, pageNum, prodsLimit, prodsTotal } = state;
+  const {
+    loading,
+    products,
+    error,
+    pageNum,
+    prodsLimit,
+    prodsTotal,
+    searchPram,
+  } = state;
 
   useEffect(() => {
     let subscribed = true;
@@ -50,6 +59,10 @@ const ProductsPage = () => {
     };
   }, [pageNum]);
 
+  const filteredProducts = products.filter((p) =>
+    p.title.toLowerCase().includes(searchPram.toLowerCase())
+  );
+
   return (
     <section className="product__page">
       <Container>
@@ -66,7 +79,8 @@ const ProductsPage = () => {
               <ErrorAlert data={error} />
             ) : (
               <Row>
-                <Product data={products} />
+                <SearchBox label="Search Items" />
+                <Product data={filteredProducts} />
                 <ProductPagination />
               </Row>
             )}

@@ -8,6 +8,7 @@ export const iState = {
   pageNum: 1,
   prodsLimit: 25,
   prodsTotal: 0,
+  searchPram: '',
 };
 
 export const reducer = (state, action) => {
@@ -43,6 +44,11 @@ export const reducer = (state, action) => {
             ? (cp.quantity = action.payload.quantity)
             : 1
         ),
+      };
+    case ACTION_TYPES.UPDATE_SEARCH_PRAM:
+      return {
+        ...state,
+        searchPram: action.payload,
       };
     default:
       return state;
