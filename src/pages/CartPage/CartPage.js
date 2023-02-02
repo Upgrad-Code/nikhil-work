@@ -62,7 +62,7 @@ const CartPage = () => {
                               });
                             }}
                           >
-                            -
+                            <i className="bi bi-dash-lg"></i>
                           </Button>
                           <span className="cart__product-qty">
                             {cp.quantity}
@@ -81,7 +81,7 @@ const CartPage = () => {
                               });
                             }}
                           >
-                            +
+                            <i className="bi bi-plus-lg"></i>
                           </Button>
                         </Col>
                         <Col md={3}>

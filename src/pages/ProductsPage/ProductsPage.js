@@ -80,7 +80,7 @@ const ProductsPage = () => {
               <ErrorAlert data={error} />
             ) : (
               <Row>
-                <SearchBox label="Search Items" />
+                <SearchBox label="Start typing to filter..." />
                 <Product data={filteredProducts} />
                 <ProductPagination />
               </Row>

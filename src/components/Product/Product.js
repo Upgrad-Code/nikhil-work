@@ -7,7 +7,7 @@ import './Product.scss';
 export const Product = ({ data }) => {
   const { state, dispatch } = useContext(ProductsContext);
   // console.log(state);
-  const { products, cart } = state;
+  const { products, cart, searchPram } = state;
 
   const options = {
     root: null,
@@ -39,7 +39,7 @@ export const Product = ({ data }) => {
     return () => {
       imgs.forEach((img) => imgObserver.unobserve(img));
     };
-  }, []);
+  }, [searchPram]);
 
   const addToCartHandler = (id) => {
     const selectedProduct = products.find((p) => p.id === id);
@@ -96,7 +96,7 @@ export const Product = ({ data }) => {
                         removeFromCart(p.id);
                       }}
                     >
-                      Remove
+                      <i className="bi bi-trash-fill"></i>
                     </Button>
                   ) : (
                     <Button
@@ -105,7 +105,7 @@ export const Product = ({ data }) => {
                         addToCartHandler(p.id);
                       }}
                     >
-                      Add
+                      <i className="bi bi-bag-plus-fill"></i>
                     </Button>
                   )}
                 </Card.Body>
