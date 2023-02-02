@@ -72,7 +72,10 @@ const CartPage = () => {
                               dispatch({
                                 type: ACTION_TYPES.UPDATE_PRODUCT_QTY,
                                 payload: {
-                                  quantity: cp.quantity + 1,
+                                  quantity:
+                                    cp.quantity < cp.stock
+                                      ? cp.quantity + 1
+                                      : cp.quantity,
                                   id: cp.id,
                                 },
                               });

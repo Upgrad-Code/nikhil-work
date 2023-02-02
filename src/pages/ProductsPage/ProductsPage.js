@@ -38,6 +38,7 @@ const ProductsPage = () => {
             pageNum * prodsLimit - prodsLimit
           }`
         );
+        console.log(data);
         if (subscribed) {
           dispatch({
             type: ACTION_TYPES.FETCH_SUCCESS,

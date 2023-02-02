@@ -39,7 +39,7 @@ export const Product = ({ data }) => {
     return () => {
       imgs.forEach((img) => imgObserver.unobserve(img));
     };
-  });
+  }, []);
 
   const addToCartHandler = (id) => {
     const selectedProduct = products.find((p) => p.id === id);
@@ -49,6 +49,8 @@ export const Product = ({ data }) => {
       title: selectedProduct.title,
       thumbnail: selectedProduct.thumbnail,
       price: selectedProduct.price,
+      rating: selectedProduct.rating,
+      stock: selectedProduct.stock,
       quantity: 1,
     };
 
