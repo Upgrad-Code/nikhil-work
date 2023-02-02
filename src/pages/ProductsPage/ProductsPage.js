@@ -9,6 +9,7 @@ import { ProductPagination } from '../../components/ProductPagination/ProductPag
 import { Loader } from '../../components/Loader/Loader';
 import { ErrorAlert } from '../../components/ErrorAlert/ErrorAlert';
 import { SearchBox } from '../../components/SearchBox/SearchBox';
+import { RatingFilter } from '../../components/RatingFilter/RatingFilter';
 import './ProductsPage.scss';
 
 const ProductsPage = () => {
@@ -22,6 +23,7 @@ const ProductsPage = () => {
     prodsLimit,
     prodsTotal,
     searchPram,
+    ratingPram,
   } = state;
 
   useEffect(() => {
@@ -60,8 +62,10 @@ const ProductsPage = () => {
     };
   }, [pageNum]);
 
-  const filteredProducts = products.filter((p) =>
-    p.title.toLowerCase().includes(searchPram.toLowerCase())
+  const filteredProducts = products.filter(
+    (p) =>
+      p.title.toLowerCase().includes(searchPram.toLowerCase()) &&
+      p.rating <= ratingPram
   );
 
   return (
@@ -80,7 +84,13 @@ const ProductsPage = () => {
               <ErrorAlert data={error} />
             ) : (
               <Row>
-                <SearchBox label="Start typing to filter..." />
+                <Col md={6}>
+                  <RatingFilter />
+                </Col>
+                <Col md={6}>
+                  <SearchBox label="Start typing to filter..." />
+                </Col>
+
                 <Product data={filteredProducts} />
                 <ProductPagination />
               </Row>

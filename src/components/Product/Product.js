@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Container, Col, Row, Card, Button } from 'react-bootstrap';
 import { ACTION_TYPES } from '../../helpers/actions';
 import { ProductsContext } from '../../contexts/productsContext';
+import ReactStars from 'react-rating-stars-component';
 import './Product.scss';
 
 export const Product = ({ data }) => {
@@ -87,7 +88,16 @@ export const Product = ({ data }) => {
                     {p.title} |{' '}
                     <span className="product__price">${p.price}</span>
                   </Card.Title>
-                  {/* <Card.Text>${p.price}</Card.Text> */}
+                  <Card.Text>
+                    <ReactStars
+                      {...{
+                        size: 20,
+                        value: p.rating,
+                        edit: false,
+                        isHalf: true,
+                      }}
+                    />
+                  </Card.Text>
 
                   {cart && cart.find((cp) => cp.id === p.id) ? (
                     <Button

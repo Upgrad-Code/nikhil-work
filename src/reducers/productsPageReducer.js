@@ -9,6 +9,7 @@ export const iState = {
   prodsLimit: 25,
   prodsTotal: 0,
   searchPram: '',
+  ratingPram: 5,
 };
 
 export const reducer = (state, action) => {
@@ -50,6 +51,8 @@ export const reducer = (state, action) => {
         ...state,
         searchPram: action.payload,
       };
+    case ACTION_TYPES.UPDATE_RATING_PRAM:
+      return { ...state, ratingPram: action.payload };
     default:
       return state;
   }
